@@ -1,5 +1,5 @@
 
-SMODS.Sprite:new("redd_atlas", Breaker.mod.path, "redd_jokers_atlas.png", 71, 95, "redd_atlas"):register()
+SMODS.Sprite:new("redd_atlas_j", Breaker.mod.path, "redd_jokers_atlas.png", 71, 95, "redd_atlas_j"):register()
 
 
 SMODS.Joker {
@@ -20,7 +20,7 @@ SMODS.Joker {
     end,
     blueprint_compat = true,
     rarity = 3,
-    atlas = "redd_atlas",
+    atlas = "redd_atlas_j",
     pos = { x = 1, y = 0 },
     cost = 7,
 
@@ -85,7 +85,7 @@ SMODS.Joker {
         }
     },
     rarity = 2,
-    atlas = "redd_atlas",
+    atlas = "redd_atlas_j",
     pos = { x = 1, y = 0 },
     cost = 4,
 
@@ -108,7 +108,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.count, card.ability.extra.mult } }
     end,
     rarity = 2,
-    atlas = "redd_atlas",
+    atlas = "redd_atlas_j",
     pos = { x = 2, y = 0 },
     cost = 4,
 }
@@ -123,7 +123,7 @@ SMODS.Joker {
         }
     },
     rarity = 2,
-    atlas = "redd_atlas",
+    atlas = "redd_atlas_j",
     pos = { x = 0, y = 1 },
     cost = 4,
 }
@@ -138,7 +138,7 @@ SMODS.Joker {
         }
     },
     rarity = 2,
-    atlas = "redd_atlas",
+    atlas = "redd_atlas_j",
     pos = { x = 1, y = 1 },
     cost = 4,
 
@@ -154,7 +154,7 @@ SMODS.Joker {
         }
     },
     rarity = 2,
-    atlas = "redd_atlas",
+    atlas = "redd_atlas_j",
     pos = { x = 2, y = 1 },
     cost = 4,
 }
