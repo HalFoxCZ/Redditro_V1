@@ -1,5 +1,5 @@
 
-SMODS.Sprite:new("redd_atlas", Breaker.mod.path, "redd_jokers_atlas.png", 71, 95, "redd_atlas"):register()
+SMODS.Sprite:new("redd_atlas_j", Breaker.mod.path, "redd_jokers_atlas.png", 71, 95, "redd_atlas_j"):register()
 
 
 SMODS.Joker {
@@ -20,7 +20,7 @@ SMODS.Joker {
     end,
     blueprint_compat = true,
     rarity = 3,
-    atlas = "redd_atlas",
+    atlas = "redd_atlas_j",
     pos = { x = 1, y = 0 },
     cost = 7,
 
@@ -85,7 +85,7 @@ SMODS.Joker {
         }
     },
     rarity = 2,
-    atlas = "redd_atlas",
+    atlas = "redd_atlas_j",
     pos = { x = 1, y = 0 },
     cost = 4,
 
@@ -108,7 +108,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.count, card.ability.extra.mult } }
     end,
     rarity = 2,
-    atlas = "redd_atlas",
+    atlas = "redd_atlas_j",
     pos = { x = 2, y = 0 },
     cost = 4,
 }
@@ -123,7 +123,7 @@ SMODS.Joker {
         }
     },
     rarity = 2,
-    atlas = "redd_atlas",
+    atlas = "redd_atlas_j",
     pos = { x = 0, y = 1 },
     cost = 4,
 }
@@ -138,10 +138,22 @@ SMODS.Joker {
         }
     },
     rarity = 2,
-    atlas = "redd_atlas",
+    atlas = "redd_atlas_j",
     pos = { x = 1, y = 1 },
     cost = 4,
-
+    calculate = function(self, card, context) 
+        if context.individual and context.cardarea == G.play then
+			-- :get_id tests for the rank of the card. Other than 2-10, Jack is 11, Queen is 12, King is 13, and Ace is 14.
+			if context.other_card:get_id() == 6 then
+				-- Specifically returning to context.other_card is fine with multiple values in a single return value, chips/mult are different from chip_mod and mult_mod, and automatically come with a message which plays in order of return.
+				return {
+                    
+                    dollars = 2,
+					card = context.other_card
+				}
+			end
+		end
+    end
 }
 
 SMODS.Joker {
@@ -150,11 +162,34 @@ SMODS.Joker {
         name = "Lucky Seven",
         text = {
             "Played {C:attention}7{}s become {C:attention}Lucky{}",
-            "mwhen scored.",   
+            "when scored.",   
         }
     },
     rarity = 2,
-    atlas = "redd_atlas",
+    atlas = "redd_atlas_j",
     pos = { x = 2, y = 1 },
     cost = 4,
+    calculate = function(self, card, context) 
+    if context.before and context.cardarea == G.play then
+            local faces = {}
+            for k, v in ipairs(context.scoring_hand) do
+                if v:get_id() == 7 or trie then 
+                    faces[#faces+1] = v
+                    v:set_ability(G.P_CENTERS.m_lucky, nil, true)
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            return true
+                        end
+                    })) 
+                end
+            end
+            if #faces > 0 then 
+                return {
+                    message = 'lucky',
+                    colour = G.C.MONEY,
+                    card = self
+                }
+            end
+        end
+    end
 }

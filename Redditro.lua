@@ -13,6 +13,7 @@
 Redditro = {}
 
 
+
 Redditro.mod_id = 'redditro'
 Redditro.INIT = {}
 
@@ -20,8 +21,10 @@ Redditro.INIT = {}
 function SMODS.INIT.redditro()
     Redditro.mod = SMODS.findModByID(Redditro.mod_id)
 
+    Redditro.VoucherTweaks = NFS.load(Redditro.mod.path .. "utils/VoucherTweaks.lua") or {}
     
     NFS.load(Redditro.mod.path .. "scripts/jokers.lua")()
+    NFS.load(Redditro.mod.path .. "scripts/jokers_2.lua")()
     NFS.load(Redditro.mod.path .. "scripts/spectrals.lua")()
     NFS.load(Redditro.mod.path .. "scripts/tarots.lua")()
     NFS.load(Redditro.mod.path .. "scripts/vouchers.lua")()
