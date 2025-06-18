@@ -36,3 +36,11 @@ function SMODS.INIT.redditro()
 
     SMODS.LOAD_LOC()
 end
+
+local sprite_logo = SMODS.Atlas{
+	key = "balatro",
+	path = "redditro.png",
+	px = 333,
+	py = 216,
+	prefix_config = { key = false },
+}:register()
