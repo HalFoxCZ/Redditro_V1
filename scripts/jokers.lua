@@ -193,3 +193,49 @@ SMODS.Joker {
         end
     end
 }
+
+
+SMODS.Joker{
+    key = "redd_acesexual",
+    loc_txt {
+        name = "Ace-sexual",
+        text = {
+            "This joker gains {X:mult,C:white}X0.05{}",
+            "Mult when each played",
+            "{C:attention}Ace{} is scored.",
+            "{C:inactive}(Currently {X:mult,C:white}X#1#{} Mult){}"
+        }
+    }
+    config = {
+        extra = {
+            xmult = 1,
+            gain = 0.05
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.xmult,
+                card.ability.extra.gain
+            }
+        }
+    end,
+
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play then
+            if context.other_card:get_id() == 14 then 
+                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.gain
+            end
+        end
+    
+        if context.joker_main then 
+            return {
+                message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.Xmult } },
+                Xmult_mod = card.ability.extra.mult
+            }
+        end
+    end
+    rarity = 3,
+    atlas = "redd_ace",
+    cost = 7,
+}
