@@ -24,7 +24,7 @@ function SMODS.INIT.redditro()
     Redditro.VoucherTweaks = NFS.load(Redditro.mod.path .. "utils/VoucherTweaks.lua") or {}
     
     NFS.load(Redditro.mod.path .. "scripts/jokers.lua")()
-    NFS.load(Redditro.mod.path .. "scripts/jokers_2.lua")()
+    -- NFS.load(Redditro.mod.path .. "scripts/jokers_2.lua")()
     NFS.load(Redditro.mod.path .. "scripts/spectrals.lua")()
     NFS.load(Redditro.mod.path .. "scripts/tarots.lua")()
     NFS.load(Redditro.mod.path .. "scripts/vouchers.lua")()

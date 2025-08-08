@@ -1,5 +1,6 @@
 
-SMODS.Sprite:new("redd_atlas_j", Breaker.mod.path, "redd_jokers_atlas.png", 71, 95, "redd_atlas_j"):register()
+SMODS.Sprite:new("redd_atlas_j", Redditro.mod.path, "redd_jokers_atlas.png", 71, 95, "redd_atlas_j"):register()
+SMODS.Sprite:new("redd_ace", Redditro.mod.path, "Ace_sexual.png", 71, 95, "redd_ace"):register()
 
 
 SMODS.Joker {
@@ -195,9 +196,9 @@ SMODS.Joker {
 }
 
 
-SMODS.Joker{
+SMODS.Joker {
     key = "redd_acesexual",
-    loc_txt {
+    loc_txt = {
         name = "Ace-sexual",
         text = {
             "This joker gains {X:mult,C:white}X0.05{}",
@@ -205,7 +206,7 @@ SMODS.Joker{
             "{C:attention}Ace{} is scored.",
             "{C:inactive}(Currently {X:mult,C:white}X#1#{} Mult){}"
         }
-    }
+    },
     config = {
         extra = {
             xmult = 1,
@@ -234,7 +235,7 @@ SMODS.Joker{
                 Xmult_mod = card.ability.extra.mult
             }
         end
-    end
+    end,
     rarity = 3,
     atlas = "redd_ace",
     cost = 7,

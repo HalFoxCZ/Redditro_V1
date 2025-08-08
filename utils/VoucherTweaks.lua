@@ -51,7 +51,7 @@ function lookup.grantTier2Voucher()
         trigger = 'after',
         delay = 0.01,
         func = function()
-            local voucher_keys = Breaker.VoucherTweaks.getAvailableTier2Vouchers()
+            local voucher_keys = Redditro.VoucherTweaks.getAvailableTier2Vouchers()
             local voucher_selected = pseudorandom_element(voucher_keys, pseudoseed("redd_broker"))
             if voucher_selected and voucher_selected ~= "v_blank" then
                 
